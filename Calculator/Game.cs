@@ -6,40 +6,45 @@ namespace Calculator
 {
     class Game
     {
-        void StringIntConversion()
+
+        void StringFloatConverstion()
         {
-            int num1;
-            int num2;
             string value1 = "";
             string value2 = "";
+            float num1;
+            float num2;
 
-            Console.WriteLine("Enter 2 numbers to be added together.");
+            Console.WriteLine("Enter 2 numbers.");
             value1 = Console.ReadLine();
             value2 = Console.ReadLine();
 
-            int.TryParse(value1, out num1);
-            int.TryParse(value2, out num2);
+            if(!(float.TryParse(value1, out num1) || float.TryParse(value2, out num2)))
+            {
+                Console.WriteLine("Invalid Input!");
+            }
         }
-        int Add(int num1, int num2)
+
+        float Add(float num1, float num2)
         {
-            StringIntConversion();
+            StringFloatConverstion();
             return num1 + num2;
         }
 
-        int Subtraction(int num1, int num2)
+        float Subtraction(float num1, float num2)
         {
-            StringIntConversion();
+            StringFloatConverstion();
             return num1 - num2;
         }
 
         float Division(float num1, float num2)
         {
+            StringFloatConverstion();
             return num1 / num2;
         }
 
-        int Multiplication(int num1, int num2)
+        float Multiplication(float num1, float num2)
         {
-            StringIntConversion();
+            StringFloatConverstion();
             return num1 * num2;
         }
 
