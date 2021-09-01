@@ -8,6 +8,7 @@ namespace Calculator
     {
         //Calculators answer
         float answer;
+        bool gameOver = false;
 
         /// <summary>
         /// Adds two values
@@ -63,18 +64,26 @@ namespace Calculator
         /// <param name="div"></param>
         /// <param name="mult"></param>
         /// <returns></returns>
-        float Calculate(string description, string add, string sub, string div, string mult)
+        float Calculate(string description, string add, string sub, string div, string mult, string quit)
         {
             string input = "";
-
+            
             //Displays menu user
             Console.WriteLine(description);
             Console.WriteLine(add);
             Console.WriteLine(sub);
             Console.WriteLine(div);
             Console.WriteLine(mult);
+            Console.WriteLine(quit);
 
             input = Console.ReadLine();
+
+            //Allows player to exit calculator
+            if(input == "quit")
+            {
+                gameOver = true;
+                return 0;
+            }
 
             //user input first value
             string value1 = "";
@@ -140,14 +149,13 @@ namespace Calculator
 
         public void Run()
         {
-
-            int inputRecieved = 0;
-
             //While loop, loops user through choosing an operation after ever calculation
-            while (!(inputRecieved == 1 || inputRecieved == 2 || inputRecieved == 3 || inputRecieved == 4))
+            while (!gameOver)
             {
-                Calculate("Which operation would you like to preform?", "\n Enter 1 for Addition",
-                    "\n Enter 2 for Subtraction", "\n Enter 3 for Division", "\n Enter 4 for Multiplication");
+                
+                Calculate("Which operation would you like to preform?", "Enter 1 for Addition",
+                    "Enter 2 for Subtraction", "Enter 3 for Division", "Enter 4 for Multiplication", "Type quit to exit calculator");
+                
             }
         }
     }
